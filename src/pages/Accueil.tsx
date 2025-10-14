@@ -1,63 +1,94 @@
+import React, { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import collectionImg from '../assets/image/collection.jpg.jpg';
-import model1 from '../assets/image/Modele1.jpg';
-import model2 from '../assets/image/Modele2.jpg';
-import model3 from '../assets/image/modele3.jpg';
-import chaussure from '../assets/image/Chaussures escarpin.jpg';
-import parure from '../assets/image/Parure en or.jpg';
-import sac from '../assets/image/sac a cuir.png.png';
-import voile from '../assets/image/Voile mousline .png';
+import ProductCard from '../components/ProductCard';
+import { products, type Product } from '../data/products';
 
 export default function Accueil() {
+  const [favorites, setFavorites] = useState<number[]>([]);
+
+  const carouselImages = [
+    {
+      url: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&h=500&fit=crop",
+      title: "NOUVELLE COLLECTION",
+      subtitle: "Élégance et modernité pour tous"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&h=500&fit=crop",
+      title: "TENDANCES 2025",
+      subtitle: "Découvrez les dernières modes"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&h=500&fit=crop",
+      title: "PROMOTIONS",
+      subtitle: "Jusqu'à -15% sur une sélection"
+    }
+  ];
+
+  const featuredProducts = products.slice(0, 4); // Show first 4 products as featured
+
+  const addToCart = (product: Product) => {
+    // Placeholder for add to cart functionality
+    alert(`Produit ajouté au panier: ${product.name}`);
+  };
+
+  const toggleFavorite = (productId: number) => {
+    if (favorites.includes(productId)) {
+      setFavorites(favorites.filter(id => id !== productId));
+    } else {
+      setFavorites([...favorites, productId]);
+    }
+  };
+
   return (
-    <div className="p-8">
-      <section className="flex flex-col md:flex-row items-center bg-brown-200 p-6 rounded-2xl shadow mb-8">
-        <div className="flex-1">
-          <h2 className="text-2xl font-bold text-brown-600">NOUVELLE COLLECTION</h2>
-          <p className="text-gray-600 mb-4">Élégance et modernité pour tous</p>
-          <button className="bg-brown-600 text-white px-4 py-2 rounded">Voir plus</button>
-        </div>
-        <img src={collectionImg} alt="Collection" className="w-64 rounded-2xl" />
-      </section>
-
-      <section className="bg-brown-400 text-white text-center py-2 rounded mb-8">
-        Réduction jusqu’à 15%
-      </section>
-
-      <section className="mb-8 ">
-        <Carousel showThumbs={false} showStatus={false} infiniteLoop={true} showArrows={true} showIndicators={true} autoPlay={true} interval={4000} stopOnHover={true}>
-          <div className="bg-brown-600 rounded-xl w-72 h-72 flex items-center justify-center mx-auto">
-            <img src={model1} alt="Modèle 1" className="rounded-xl w-72 h-72 object-contain" />
-          </div>
-          <div className="bg-brown-600 rounded-xl w-72 h-72 flex items-center justify-center mx-auto">
-            <img src={model2} alt="Modèle 2" className="rounded-xl w-72 h-72 object-contain" />
-          </div>
-          <div className="bg-brown-600 rounded-xl w-72 h-72 flex items-center justify-center mx-auto">
-            <img src={model3} alt="Modèle 3" className="rounded-xl w-72 h-72 object-contain" />
-          </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Carousel */}
+      <section className="relative h-96 md:h-[500px] overflow-hidden">
+        <Carousel showThumbs={false} showStatus={false} infiniteLoop={true} showArrows={true} showIndicators={true} autoPlay={true} interval={5000} stopOnHover={true}>
+          {carouselImages.map((slide, index) => (
+            <div key={index} className="relative h-96 md:h-[500px]">
+              <img
+                src={slide.url}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div className="text-center text-white px-4">
+                  <h1 className="text-4xl md:text-6xl font-bold mb-4">{slide.title}</h1>
+                  <p className="text-xl md:text-2xl mb-6">{slide.subtitle}</p>
+                  <button className="bg-amber-700 text-white px-8 py-3 rounded-lg hover:bg-amber-800 transition">
+                    Découvrir
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </Carousel>
       </section>
 
-      <h3 className="text-xl font-bold mb-4">Nos Nouveautés</h3>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Produit img={chaussure} titre="Chaussures escarpin" prix="30000 FCFA" />
-        <Produit img={parure} titre="Parure en or" prix="300000 FCFA" />
-        <Produit img={sac} titre="Sac en cuir" prix="15000 FCFA" />
-        <Produit img={voile} titre="Voile Mouslin simple" prix="1000 FCFA" />
+      {/* Promotion Banner */}
+      <div className="bg-amber-700 text-white text-center py-4">
+        <p className="text-xl font-semibold">🎉 Réduction jusqu'à moins 15% - Offre limitée !</p>
       </div>
-    </div>
-  );
-}
 
-function Produit({ img, titre, prix }: { img: string; titre: string; prix: string }) {
-  return (
-    <div className="p-4 rounded-xl shadow text-center">
-      <img src={img} alt={titre} className="rounded-xl mb-2 w-40 h-40 object-cover" />
-      <p className="font-semibold text-brown-600">{titre}</p>
-      <p className="text-sm text-gray-600">{prix}</p>
-      <button className="mt-2 bg-brown-600 text-white px-3 py-1 rounded">Voir</button>
+      {/* Featured Products */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">NOS NOUVEAUTÉS</h2>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={addToCart}
+                onToggleFavorite={toggleFavorite}
+                isFavorite={favorites.includes(product.id)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
