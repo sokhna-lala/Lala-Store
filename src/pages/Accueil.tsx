@@ -46,7 +46,7 @@ export default function Accueil() {
         <Produit img={sac} titre="Sac en cuir" prix="15000 FCFA" />
         <Produit img={voile} titre="Voile Mouslin simple" prix="1000 FCFA" />
       </div>
-    </div>
+    </Layout>
   );
 }
 

@@ -4,3 +4,12 @@
 @plugin "daisyui" {
   themes: light;
 }
+
+/* Custom site background */
+:root {
+  --site-beige: #f5efe6; /* beige clair */
+}
+
+body {
+  background-color: var(--site-beige);
+}
