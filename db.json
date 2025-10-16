@@ -1,0 +1,149 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Produit A",
+      "price": 20,
+      "stock": 100
+    },
+    {
+      "id": "9a67",
+      "name": "Produit A",
+      "price": 20,
+      "stock": 100
+    },
+    {
+      "id": "75ea",
+      "name": "Voile jersey",
+      "price": 2000,
+      "stock": 100
+    },
+    {
+      "id": "3016",
+      "name": "Lafaya",
+      "price": 2000,
+      "stock": 100
+    },
+    {
+      "id": "ece0",
+      "name": "Lafaya",
+      "price": 2000,
+      "stock": 100
+    },
+    {
+      "id": "962d",
+      "name": "Brodée",
+      "price": 2000,
+      "stock": 100
+    },
+    {
+      "id": "a33c",
+      "name": "Sac Dior",
+      "price": 2000,
+      "stock": 100
+    },
+    {
+      "id": "4524",
+      "name": "Boucle d'oreils",
+      "price": 2000,
+      "stock": 100
+    },
+    {
+      "id": "2625",
+      "name": "Parure en Or",
+      "price": 2000,
+      "stock": 100
+    },
+    {
+      "id": "bb01",
+      "name": "Parure en Or",
+      "price": 2000000,
+      "stock": 100
+    },
+    {
+      "id": "7d48",
+      "name": "Brodée Autriche",
+      "price": 20000,
+      "stock": 30
+    },
+    {
+      "id": "95c1",
+      "name": "Cotonade",
+      "price": 20000,
+      "stock": 40
+    },
+    {
+      "id": "5ea5",
+      "name": "Sac en cuir",
+      "price": 10000,
+      "stock": 30
+    }
+  ],
+  "clients": [
+    {
+      "id": "1",
+      "name": "Khady Fall",
+      "email": "fallkhady@gmail.com"
+    },
+    
+   
+    {
+      "id": "9504",
+      "name": "Fatima Diop",
+      "email": "diopfatima@gmail.com"
+    },
+    {
+      "id": "25d0",
+      "name": "Bineta Ciss",
+      "email": "cissbineta221@gmail.com"
+    },
+    {
+      "id": "7b74",
+      "name": "Khadija Ndiaye",
+      "email": "ndiayekhadija@gmail.com"
+    },
+    {
+      "id": "6b2e",
+      "name": "Aicha Ba",
+      "email": "baaicha1@gmail.com"
+    },
+    {
+      "id": "4ae5",
+      "name": "Soumaya Diallo",
+      "email": "diallosoumaya33@gmail.com"
+    },
+    {
+      "id": "d617",
+      "name": "Oumou Kalsoum Sow",
+      "email": "sowoumou133@gmail.com"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "clientId": 1,
+      "productId": 1,
+      "quantity": 2,
+      "date": "2025-10-15"
+    }
+  ],
+  "stock": [
+    {
+      "id": "1",
+      "productName": "Produit A",
+      "quantity": 100,
+      "location": "Entrepôt Principal"
+    },
+    {
+      "id": "2",
+      "productName": "Voile jersey",
+      "quantity": 100,
+      "location": "Entrepôt Secondaire"
+    }
+  ],
+  "stats": {
+    "totalSales": 40,
+    "totalProductsSold": 2,
+    "uniqueClients": 1
+  }
+}
