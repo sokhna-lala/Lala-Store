@@ -64,7 +64,7 @@ export default function Accueil() {
                 </div>
               </div>
 
-              {/* ✅ Image corrigée */}
+              {/* ✅ Image  */}
               <div className="flex-1 relative flex justify-center items-center">
                 <div className="absolute -inset-4 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 blur-3xl"></div>
 
