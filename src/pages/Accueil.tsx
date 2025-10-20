@@ -5,10 +5,9 @@ import Carousel from "../components/Carousel";
 export default function Accueil() {
   return (
     <Layout>
-      <div className="bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 min-h-screen">
+      <div className="bg-gradient-to-b from-purple-50 via-pink-50 to-gold-100 min-h-screen">
         {/* Hero Section - Nouvelle Collection */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-100/50 to-orange-100/50"></div>
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
             <div className="flex flex-col lg:flex-row items-center gap-12">

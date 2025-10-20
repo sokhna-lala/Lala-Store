@@ -35,7 +35,7 @@ export default function ProductsPage() {
             .then(data => {
                 setProducts(data);
                 setLoading(false);
-                console.log(res)
+                console.log(Response)
             })
             .catch(err => {
                 setError((err as Error).message);

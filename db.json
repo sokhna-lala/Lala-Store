@@ -4,118 +4,138 @@
       "id": "1",
       "name": "Produit A",
       "price": 20,
-      "stock": 100
+      "stock": 100,
+      "image": "/Models/model1.jpg"
     },
     {
       "id": "9a67",
       "name": "Produit A",
       "price": 20,
-      "stock": 100
+      "stock": 100,
+      "image": "/Models/model2.jpg"
     },
     {
       "id": "75ea",
       "name": "Voile jersey",
       "price": 2000,
-      "stock": 100
+      "stock": 100,
+      "image": "/Voile/voiles jersey .png"
     },
     {
       "id": "3016",
       "name": "Lafaya",
       "price": 2000,
-      "stock": 100
+      "stock": 100,
+      "image": "/Tissus/tissu mariage.jpeg"
     },
     {
       "id": "ece0",
       "name": "Lafaya",
       "price": 2000,
-      "stock": 100
+      "stock": 100,
+      "image": "/Tissus/tissu mariage.jpeg"
     },
     {
       "id": "962d",
       "name": "Brodée",
       "price": 2000,
-      "stock": 100
+      "stock": 100,
+      "image": "/Tissus/Brodé1.jpeg"
     },
     {
       "id": "a33c",
       "name": "Sac Dior",
       "price": 2000,
-      "stock": 100
+      "stock": 100,
+      "image": "/Sac/sac dior.jpeg"
     },
     {
       "id": "4524",
       "name": "Boucle d'oreils",
       "price": 2000,
-      "stock": 100
+      "stock": 100,
+      "image": "/Bijoux/BOUCL D5.jpeg"
     },
     {
       "id": "2625",
       "name": "Parure en Or",
       "price": 2000,
-      "stock": 100
+      "stock": 100,
+      "image": "/Bijoux/colier 1.jpeg"
     },
     {
       "id": "bb01",
       "name": "Parure en Or",
       "price": 2000000,
-      "stock": 100
+      "stock": 100,
+      "image": "/Bijoux/colier 5.jpeg"
     },
     {
       "id": "7d48",
       "name": "Brodée Autriche",
       "price": 20000,
-      "stock": 30
+      "stock": 30,
+      "image": "/Tissus/Brodé autriche.jpeg"
     },
     {
       "id": "95c1",
       "name": "Cotonade",
       "price": 20000,
-      "stock": 40
+      "stock": 40,
+      "image": "/Tissus/cotonade.jpeg"
     },
     {
       "id": "5ea5",
       "name": "Sac en cuir",
       "price": 10000,
-      "stock": 30
+      "stock": 30,
+      "image": "/Sac/SAC cuire.jpeg"
     }
   ],
   "clients": [
     {
       "id": "1",
       "name": "Khady Fall",
-      "email": "fallkhady@gmail.com"
+      "email": "fallkhady@gmail.com",
+      "phone": "+221 77 123 45 67"
     },
-    
-   
+
+
     {
       "id": "9504",
       "name": "Fatima Diop",
-      "email": "diopfatima@gmail.com"
+      "email": "diopfatima@gmail.com",
+      "phone": "+221 78 234 56 78"
     },
     {
       "id": "25d0",
       "name": "Bineta Ciss",
-      "email": "cissbineta221@gmail.com"
+      "email": "cissbineta221@gmail.com",
+      "phone": "+221 76 345 67 89"
     },
     {
       "id": "7b74",
       "name": "Khadija Ndiaye",
-      "email": "ndiayekhadija@gmail.com"
+      "email": "ndiayekhadija@gmail.com",
+      "phone": "+221 70 456 78 90"
     },
     {
       "id": "6b2e",
       "name": "Aicha Ba",
-      "email": "baaicha1@gmail.com"
+      "email": "baaicha1@gmail.com",
+      "phone": "+221 75 567 89 01"
     },
     {
       "id": "4ae5",
       "name": "Soumaya Diallo",
-      "email": "diallosoumaya33@gmail.com"
+      "email": "diallosoumaya33@gmail.com",
+      "phone": "+221 77 678 90 12"
     },
     {
       "id": "d617",
       "name": "Oumou Kalsoum Sow",
-      "email": "sowoumou133@gmail.com"
+      "email": "sowoumou133@gmail.com",
+      "phone": "+221 78 789 01 23"
     }
   ],
   "orders": [
