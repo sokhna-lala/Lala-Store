@@ -1,8 +1,16 @@
+import { Link, Navigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import Produit from "../components/Produit";
 import Carousel from "../components/Carousel";
+import { useAuth } from "../context/AuthContext";
 
 export default function Accueil() {
+  const { user } = useAuth();
+
+  // Redirect admin users to admin dashboard
+  if (user?.role === "admin") {
+    return <Navigate to="/admin" replace />;
+  }
   return (
     <Layout>
       <div className="bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 min-h-screen">
@@ -34,9 +42,12 @@ export default function Accueil() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <button className="bg-gradient-to-r from-amber-600 to-orange-500 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                  <Link
+                    to="/all-products"
+                    className="bg-gradient-to-r from-amber-600 to-orange-500 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-block"
+                  >
                     Voir plus
-                  </button>
+                  </Link>
 
                   <button className="bg-white/80 backdrop-blur-sm text-amber-900 font-semibold px-8 py-4 rounded-full shadow hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                     En savoir plus

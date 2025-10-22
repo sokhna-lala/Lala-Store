@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-type User = { name: string; email: string } | null;
+type User = { name: string; email: string; role: string } | null;
 
 type AuthContextValue = {
   user: User;
@@ -23,6 +23,7 @@ function readUsers() {
           name: string;
           email: string;
           password: string;
+          role?: string;
         }>)
       : [];
   } catch {
@@ -52,7 +53,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       (u) => u.email === email && u.password === password
     );
     if (found) {
-      const u = { name: found.name, email: found.email };
+      const u = {
+        name: found.name,
+        email: found.email,
+        role: found.role || "user",
+      };
       localStorage.setItem(AUTH_USER_KEY, JSON.stringify(u));
       setUser(u);
       return true;
@@ -64,9 +69,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const users = readUsers();
     const exists = users.find((u) => u.email === email);
     if (exists) return false;
-    users.push({ name, email, password });
+    const role = email.includes("admin") ? "admin" : "user";
+    users.push({ name, email, password, role });
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
-    const u = { name, email };
+    const u = { name, email, role };
     localStorage.setItem(AUTH_USER_KEY, JSON.stringify(u));
     setUser(u);
     return true;

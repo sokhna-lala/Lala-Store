@@ -1,0 +1,392 @@
+{
+  "products": [
+    {
+      "id": "robe-elegante",
+      "img": "Robe/5.jpeg",
+      "titre": "Robe élégante",
+      "prix": "25 000 FCFA",
+      "category": "vetements",
+      "description": "Une robe élégante parfaite pour les occasions spéciales.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Noir",
+        "Rouge",
+        "Bleu"
+      ]
+    },
+    {
+      "id": "bourka",
+      "img": "Robe/bourka.jpeg",
+      "titre": "Bourka",
+      "prix": "15 000 FCFA",
+      "category": "vetements",
+      "description": "Une bourka traditionnelle pour un look élégant et modeste.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Noir",
+        "Blanc"
+      ]
+    },
+    {
+      "id": "robe-laila",
+      "img": "Robe/robe 6.jpeg",
+      "titre": "robe laila",
+      "prix": "18 000 FCFA",
+      "category": "vetements",
+      "description": "Une robe élégante et confortable pour toutes occasions.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Bleu",
+        "Rouge",
+        "Noir"
+      ]
+    },
+    {
+      "id": "abaya-nour",
+      "img": "Robe/robe2.jpeg",
+      "titre": "abaya nour",
+      "prix": "35 000 FCFA",
+      "category": "vetements",
+      "description": "Une abaya élégante et moderne pour un style raffiné.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Noir",
+        "Beige",
+        "Gris"
+      ]
+    },
+    {
+      "id": "jupe-ete",
+      "img": "Robe/robe 8.jpg",
+      "titre": "Jupe d'eté",
+      "prix": "35 000 FCFA",
+      "category": "vetements",
+      "description": "Une jupe légère et élégante parfaite pour l'été.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Bleu",
+        "Rouge",
+        "Blanc"
+      ]
+    },
+    {
+      "id": "ensemble-salope",
+      "img": "Robe/robe 9.jpg",
+      "titre": "Ensemble salope",
+      "prix": "35 000 FCFA",
+      "category": "vetements",
+      "description": "Un ensemble chic et moderne pour un look audacieux.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Noir",
+        "Rouge",
+        "Bleu"
+      ]
+    },
+    {
+      "id": "ensemble-sarah",
+      "img": "Robe/robe2.jpeg",
+      "titre": "Ensemble sarah",
+      "prix": "35 000 FCFA",
+      "category": "vetements",
+      "description": "Un ensemble élégant et confortable pour toutes occasions.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Bleu",
+        "Rouge",
+        "Noir"
+      ]
+    },
+    {
+      "id": "ensemble-jupe-plissee",
+      "img": "Robe/robe 10.jpg",
+      "titre": "Ensemble Jupe plissée plus chemise",
+      "prix": "35 000 FCFA",
+      "category": "vetements",
+      "description": "Un ensemble avec jupe plissée et chemise, parfait pour un look élégant.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Bleu",
+        "Rouge",
+        "Noir"
+      ]
+    },
+    {
+      "id": "ensemble-pantalon-cumeno",
+      "img": "Robe/robe 15.jpg",
+      "titre": "Ensemble pantalon cumeno",
+      "prix": "35 000 FCFA",
+      "category": "vetements",
+      "description": "Un ensemble avec pantalon cumeno, idéal pour un style décontracté et élégant.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Bleu",
+        "Rouge",
+        "Noir"
+      ]
+    },
+    {
+      "id": "ensemble-jupe-cumeno-marron",
+      "img": "Robe/robe 16.jpg",
+      "titre": "Ensemble jupe cumeno Marron",
+      "prix": "15 000 FCFA",
+      "category": "vetements",
+      "description": "Un ensemble avec jupe cumeno marron, style élégant et confortable.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Marron"
+      ]
+    },
+    {
+      "id": "robe-large-jaune",
+      "img": "Robe/robe 17.jpg",
+      "titre": "Robe large Jaune moutarde",
+      "prix": "15 000 FCFA",
+      "category": "vetements",
+      "description": "Une robe large de couleur jaune moutarde, parfaite pour un look décontracté.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Jaune"
+      ]
+    },
+    {
+      "id": "charry-vert",
+      "img": "Robe/robe 18.jpg",
+      "titre": "Charry vert",
+      "prix": "15 000 FCFA",
+      "category": "vetements",
+      "description": "Un charry vert, idéal pour les sorties.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Vert"
+      ]
+    },
+    {
+      "id": "ensemble-salope-2",
+      "img": "Robe/robe 9.jpg",
+      "titre": "Ensemble salope",
+      "prix": "35 000 FCFA",
+      "category": "vetements",
+      "description": "Un ensemble chic et moderne pour un look audacieux.",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Noir",
+        "Rouge",
+        "Bleu"
+      ]
+    },
+    {
+      "id": "chaussure-1",
+      "img": "Chaussure/Chaussure 1.jpg",
+      "titre": "Chaussure 1",
+      "prix": "20 000 FCFA",
+      "category": "chaussures",
+      "description": "Chaussures confortables pour tous les jours.",
+      "sizes": [
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41"
+      ],
+      "colors": [
+        "Noir",
+        "Blanc",
+        "Marron"
+      ]
+    },
+    {
+      "id": "lunette-1",
+      "img": "Accessoire/lunette 1.jpg",
+      "titre": "Lunette 1",
+      "prix": "5 000 FCFA",
+      "category": "accessoires",
+      "description": "Lunettes de soleil élégantes pour un style moderne.",
+      "sizes": [],
+      "colors": [
+        "Noir",
+        "Bleu",
+        "Rouge"
+      ]
+    },
+    {
+      "id": "voile-1",
+      "img": "Voiles/Voile 1.jpg",
+      "titre": "Voile 1",
+      "prix": "2 000 FCFA",
+      "category": "voiles"
+    },
+    {
+      "id": "tissu-brode-autriche",
+      "img": "Tissus/Brodé autriche.jpeg",
+      "titre": "Brodé autriche",
+      "prix": "30 000 FCFA",
+      "category": "tissus"
+    },
+    {
+      "id": "boucle-14",
+      "img": "Bijoux/BOUCLE 14.jpeg",
+      "titre": "Boucle 14",
+      "prix": "4 500 FCFA",
+      "category": "bijoux"
+    },
+    {
+      "id": "sac-dior",
+      "img": "Sac/sac dior.jpeg",
+      "titre": "Sac Dior",
+      "prix": "25 000 FCFA",
+      "category": "sacs"
+    },
+    {
+      "id": "cachemir-imprime",
+      "img": "Voile/Cachemir imprimé.jpeg",
+      "titre": "Cachemir imprimé",
+      "prix": "3 000 FCFA",
+      "category": "voiles"
+    }
+  ],
+  "users": [
+    {
+      "name": "Admin User",
+      "email": "admin@lala-store.com",
+      "password": "admin123",
+      "role": "admin",
+      "id": "4d32"
+    },
+    {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "password123",
+      "role": "user",
+      "id": "a564"
+    },
+    {
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "password": "password123",
+      "role": "user",
+      "id": "9fb4"
+    }
+  ],
+  "orders": [
+    {
+      "id": "order-001",
+      "user": "john@example.com",
+      "items": [
+        {
+          "id": "robe-elegante",
+          "titre": "Robe élégante",
+          "prix": "25 000 FCFA",
+          "qty": 1
+        },
+        {
+          "id": "lunette-1",
+          "titre": "Lunette 1",
+          "prix": "5 000 FCFA",
+          "qty": 2
+        }
+      ],
+      "total": "35 000 FCFA",
+      "status": "pending",
+      "date": "2024-01-15"
+    },
+    {
+      "id": "order-002",
+      "user": "jane@example.com",
+      "items": [
+        {
+          "id": "sac-dior",
+          "titre": "Sac Dior",
+          "prix": "25 000 FCFA",
+          "qty": 1
+        }
+      ],
+      "total": "25 000 FCFA",
+      "status": "shipped",
+      "date": "2024-01-20"
+    },
+    {
+      "id": "order-1761125802538",
+      "user": "diatou123@gmail.com",
+      "items": [
+        {
+          "titre": "Robe élégante",
+          "prix": "25 000 FCFA",
+          "qty": 2
+        }
+      ],
+      "total": "50 000 FCFA",
+      "status": "pending",
+      "date": "2025-10-22",
+      "paymentMethod": "wave",
+      "phone": "764569867",
+      "address": "liberté 6"
+    }
+  ]
+}

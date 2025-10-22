@@ -20,47 +20,82 @@ export default function Signup() {
 
   return (
     <Layout>
-      <div className="p-8 max-w-md mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Créer un compte</h1>
-        <form onSubmit={submit} className="space-y-3">
-          <div>
-            <label className="block text-sm">Nom</label>
-            <input
-              placeholder="Votre nom"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full border px-2 py-1"
-            />
+      <div className="min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="w-full max-w-md">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+              Créer un compte
+            </h1>
+            <p className="text-gray-600 text-center mb-8">
+              Rejoignez-nous dès aujourd'hui
+            </p>
+
+            <form onSubmit={submit} className="space-y-5">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Nom
+                </label>
+                <input
+                  placeholder="Votre nom"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B5E3C] focus:border-transparent transition"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Email
+                </label>
+                <input
+                  placeholder="votre@email.com"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B5E3C] focus:border-transparent transition"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Mot de passe
+                </label>
+                <input
+                  placeholder="Mot de passe"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B5E3C] focus:border-transparent transition"
+                />
+              </div>
+
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="w-full px-4 py-3 bg-[#8B5E3C] text-white rounded-lg font-medium hover:bg-[#6d4a2e] transition shadow-md"
+              >
+                Créer mon compte
+              </button>
+
+              <div className="text-center pt-4">
+                <p className="text-gray-600 text-sm">
+                  Vous avez déjà un compte ?{" "}
+                  <Link
+                    to="/login"
+                    className="text-[#8B5E3C] font-medium hover:underline"
+                  >
+                    Se connecter
+                  </Link>
+                </p>
+              </div>
+            </form>
           </div>
-          <div>
-            <label className="block text-sm">Email</label>
-            <input
-              placeholder="votre@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full border px-2 py-1"
-            />
-          </div>
-          <div>
-            <label className="block text-sm">Mot de passe</label>
-            <input
-              placeholder="Mot de passe"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full border px-2 py-1"
-            />
-          </div>
-          {error && <div className="text-red-600">{error}</div>}
-          <div className="flex gap-2">
-            <button className="px-4 py-2 bg-[#8B5E3C] text-white rounded">
-              Créer
-            </button>
-            <Link to="/login" className="px-4 py-2 border rounded">
-              Se connecter
-            </Link>
-          </div>
-        </form>
+        </div>
       </div>
     </Layout>
   );
