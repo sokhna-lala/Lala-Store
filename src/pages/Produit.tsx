@@ -14,6 +14,7 @@ export default function ProduitPage() {
     description?: string;
     sizes?: string[];
     colors?: string[];
+    category?: string;
   };
   const product: ProductState = (state as ProductState) || {
     id: paramId,

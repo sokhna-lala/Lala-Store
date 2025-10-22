@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
+import { useAuth } from "../context/AuthContext";
 
 type CartEntry = {
   id?: string | number;
@@ -10,6 +11,7 @@ type CartEntry = {
 };
 
 export default function Panier() {
+  const { user } = useAuth();
   const [cart, setCart] = useState<CartEntry[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<"wave" | "orange">("wave");
@@ -113,22 +115,62 @@ export default function Panier() {
     setShowModal(true);
   }
 
-  function handleConfirmOrder() {
+  async function handleConfirmOrder() {
     if (!phone.trim() || !address.trim()) {
       alert(
         "Veuillez remplir le numéro de téléphone et l'adresse de livraison."
       );
       return;
     }
-    // in a real app we'd send the order to the backend. Here we clear the cart and notify
-    localStorage.removeItem("cart");
-    window.dispatchEvent(new CustomEvent("cartUpdated"));
-    setCart([]);
-    setShowModal(false);
-    setPhone("");
-    setAddress("");
-    setPaymentMethod("wave");
-    window.alert("Commande validée — merci !");
+
+    // Prepare order data
+    const order = {
+      id: `order-${Date.now()}`,
+      user: user?.email || "guest@example.com",
+      items: cart.map((item) => ({
+        id: item.id,
+        titre: item.titre,
+        prix: item.prix,
+        qty: item.qty,
+      })),
+      total: Object.entries(totals)
+        .map(([cur, val]) => `${formatNumber(val)} ${cur}`)
+        .join(" + "),
+      status: "pending",
+      date: new Date().toISOString().split("T")[0], // YYYY-MM-DD format
+      paymentMethod,
+      phone,
+      address,
+    };
+
+    try {
+      // Send order to API
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
+      const response = await fetch(`${apiUrl}/orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create order");
+      }
+
+      // Clear cart
+      localStorage.removeItem("cart");
+      window.dispatchEvent(new CustomEvent("cartUpdated"));
+      setCart([]);
+      setShowModal(false);
+      setPhone("");
+      setAddress("");
+      setPaymentMethod("wave");
+      window.alert("Commande validée — merci !");
+    } catch (error) {
+      console.error("Error creating order:", error);
+      alert("Erreur lors de la création de la commande. Veuillez réessayer.");
+    }
   }
 
   function handleCancelOrder() {

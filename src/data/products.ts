@@ -1,3 +1,18 @@
+const PRODUCTS_KEY = "products";
+
+function readProducts(): Product[] {
+  try {
+    const raw = localStorage.getItem(PRODUCTS_KEY);
+    return raw ? JSON.parse(raw) : defaultProducts;
+  } catch {
+    return defaultProducts;
+  }
+}
+
+export function saveProducts(products: Product[]) {
+  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
+}
+
 export type Product = {
   id: string;
   img: string;
@@ -9,7 +24,7 @@ export type Product = {
   colors?: string[];
 };
 
-export const products: Product[] = [
+const defaultProducts: Product[] = [
   // Vêtements
   {
     id: "robe-elegante",
@@ -134,6 +149,16 @@ export const products: Product[] = [
     description: "Un charry vert, idéal pour les sorties.",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Vert"],
+  },
+  {
+    id: "ensemble-salope-2",
+    img: "Robe/robe 9.jpg",
+    titre: "Ensemble salope",
+    prix: "35 000 FCFA",
+    category: "vetements",
+    description: "Un ensemble chic et moderne pour un look audacieux.",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Noir", "Rouge", "Bleu"],
   },
 
   // Chaussures
@@ -1036,3 +1061,5 @@ export const products: Product[] = [
     category: "voiles",
   },
 ];
+
+export const products: Product[] = readProducts();

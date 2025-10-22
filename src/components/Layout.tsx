@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import Footer from "./Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useAuth } from "../context/useAuth";
+import { useAuth } from "../context/AuthContext";
 import { products } from "../data/products";
 
 type LayoutProps = {
@@ -19,6 +19,7 @@ export default function Layout({
   navbar = true,
   footer = true,
 }: LayoutProps) {
+  const { user } = useAuth();
   const [count, setCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
@@ -62,17 +63,26 @@ export default function Layout({
       {header && (
         <header className="bg-white border-b">
           <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="LalaStore" className="w-8 h-8" />
-              <span className="font-semibold text-[#8B5E3C]">LalaStore</span>
-            </div>
+            {user?.role !== "admin" && (
+              <div className="flex items-center gap-2">
+                <img src="/logo.png" alt="LalaStore" className="w-8 h-8" />
+                <span className="font-semibold text-[#8B5E3C]">LalaStore</span>
+              </div>
+            )}
+            {user?.role === "admin" && (
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-red-600">
+                  Administration LalaStore
+                </span>
+              </div>
+            )}
 
             <AuthButtons count={count} />
           </div>
         </header>
       )}
 
-      {navbar && (
+      {navbar && user?.role !== "admin" && (
         <nav className="bg-white">
           <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
             <div className="flex gap-4">
@@ -146,6 +156,14 @@ function AuthButtons({ count }: { count: number }) {
           >
             Déconnexion
           </button>
+          {user.role === "admin" && (
+            <Link
+              to="/admin"
+              className="text-sm text-red-600 hover:text-red-800 font-semibold"
+            >
+              Admin
+            </Link>
+          )}
         </>
       ) : (
         <>
@@ -158,14 +176,16 @@ function AuthButtons({ count }: { count: number }) {
         </>
       )}
 
-      <Link to="/panier" className="relative">
-        <button className="text-gray-600 hover:text-gray-800">Panier</button>
-        {count > 0 && (
-          <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full">
-            {count}
-          </span>
-        )}
-      </Link>
+      {user?.role !== "admin" && (
+        <Link to="/panier" className="relative">
+          <button className="text-gray-600 hover:text-gray-800">Panier</button>
+          {count > 0 && (
+            <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full">
+              {count}
+            </span>
+          )}
+        </Link>
+      )}
     </div>
   );
 }
