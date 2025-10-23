@@ -6,10 +6,18 @@ import { useAuth } from "../context/AuthContext";
 type Order = {
   id: string;
   user: string;
-  items: Array<{ id: string; titre: string; prix: string; qty: number }>;
+  items: Array<{
+    id?: string | number;
+    titre?: string;
+    prix?: string | number;
+    qty?: number;
+  }>;
   total: string;
   status: string;
   date: string;
+  paymentMethod: string;
+  phone: string;
+  address: string;
 };
 
 export default function AdminOrders() {
@@ -121,10 +129,31 @@ export default function AdminOrders() {
                 <ul className="space-y-1">
                   {order.items.map((item, idx) => (
                     <li key={idx} className="text-sm text-gray-600">
-                      {item.titre} (x{item.qty}) - {item.prix}
+                      {item.titre} (x{item.qty}) -{" "}
+                      {typeof item.prix === "number"
+                        ? `${item.prix} €`
+                        : item.prix}
                     </li>
                   ))}
                 </ul>
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <h4 className="font-semibold mb-1">Méthode de paiement:</h4>
+                    <p>
+                      {order.paymentMethod === "wave" ? "Wave" : "Orange Money"}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Téléphone:</h4>
+                    <p>{order.phone}</p>
+                  </div>
+                  <div className="md:col-span-2">
+                    <h4 className="font-semibold mb-1">
+                      Adresse de livraison:
+                    </h4>
+                    <p>{order.address}</p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

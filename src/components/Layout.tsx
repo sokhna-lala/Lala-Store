@@ -177,14 +177,24 @@ function AuthButtons({ count }: { count: number }) {
       )}
 
       {user?.role !== "admin" && (
-        <Link to="/panier" className="relative">
-          <button className="text-gray-600 hover:text-gray-800">Panier</button>
-          {count > 0 && (
-            <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full">
-              {count}
-            </span>
-          )}
-        </Link>
+        <>
+          <Link
+            to="/mes-commandes"
+            className="text-gray-600 hover:text-gray-800"
+          >
+            Mes Commandes
+          </Link>
+          <Link to="/panier" className="relative">
+            <button className="text-gray-600 hover:text-gray-800">
+              Panier
+            </button>
+            {count > 0 && (
+              <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full">
+                {count}
+              </span>
+            )}
+          </Link>
+        </>
       )}
     </div>
   );
