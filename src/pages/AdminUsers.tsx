@@ -10,9 +10,21 @@ type User = {
   role: string;
 };
 
+type EditUser = {
+  name: string;
+  password: string;
+  role: string;
+};
+
 export default function AdminUsers() {
   const { user } = useAuth();
   const [users, setUsers] = useState<User[]>([]);
+  const [editingUser, setEditingUser] = useState<string | null>(null);
+  const [editForm, setEditForm] = useState<EditUser>({
+    name: "",
+    password: "",
+    role: "user",
+  });
 
   useEffect(() => {
     const usersRaw = localStorage.getItem("users");
@@ -35,12 +47,33 @@ export default function AdminUsers() {
     );
   }
 
-  const handleRoleChange = (email: string, newRole: string) => {
+  const handleEdit = (user: User) => {
+    setEditingUser(user.email);
+    setEditForm({ name: user.name, password: user.password, role: user.role });
+  };
+
+  const handleSaveEdit = () => {
+    if (!editingUser) return;
     const updatedUsers = users.map((u) =>
-      u.email === email ? { ...u, role: newRole } : u
+      u.email === editingUser ? { ...u, ...editForm } : u
     );
     setUsers(updatedUsers);
     localStorage.setItem("users", JSON.stringify(updatedUsers));
+    setEditingUser(null);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingUser(null);
+  };
+
+  const handleDelete = (email: string) => {
+    if (
+      window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")
+    ) {
+      const updatedUsers = users.filter((u) => u.email !== email);
+      setUsers(updatedUsers);
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+    }
   };
 
   return (
@@ -78,26 +111,74 @@ export default function AdminUsers() {
               {users.map((u) => (
                 <tr key={u.email}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {u.name}
+                    {editingUser === u.email ? (
+                      <input
+                        type="text"
+                        value={editForm.name}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, name: e.target.value })
+                        }
+                        className="border rounded px-2 py-1 w-full"
+                        placeholder="Nom"
+                        aria-label="Modifier le nom"
+                      />
+                    ) : (
+                      u.name
+                    )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {u.email}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {u.role}
+                    {editingUser === u.email ? (
+                      <select
+                        value={editForm.role}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, role: e.target.value })
+                        }
+                        className="border rounded px-2 py-1"
+                        aria-label="Modifier le rôle"
+                      >
+                        <option value="user">Utilisateur</option>
+                        <option value="admin">Administrateur</option>
+                      </select>
+                    ) : (
+                      u.role
+                    )}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <select
-                      value={u.role}
-                      onChange={(e) =>
-                        handleRoleChange(u.email, e.target.value)
-                      }
-                      className="border rounded px-2 py-1"
-                      aria-label="Changer le rôle de l'utilisateur"
-                    >
-                      <option value="user">Utilisateur</option>
-                      <option value="admin">Administrateur</option>
-                    </select>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex space-x-2">
+                    {editingUser === u.email ? (
+                      <>
+                        <button
+                          onClick={handleSaveEdit}
+                          className="bg-green-600 text-white px-2 py-1 rounded text-xs"
+                        >
+                          Sauvegarder
+                        </button>
+                        <button
+                          onClick={handleCancelEdit}
+                          className="bg-gray-600 text-white px-2 py-1 rounded text-xs"
+                        >
+                          Annuler
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => handleEdit(u)}
+                          className="bg-blue-600 text-white px-2 py-1 rounded text-xs"
+                        >
+                          Modifier
+                        </button>
+                        <button
+                          onClick={() => handleDelete(u.email)}
+                          className="bg-red-600 text-white px-2 py-1 rounded text-xs"
+                          disabled={u.email === user.email}
+                        >
+                          Supprimer
+                        </button>
+                      </>
+                    )}
                   </td>
                 </tr>
               ))}

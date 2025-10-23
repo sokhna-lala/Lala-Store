@@ -21,6 +21,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminProducts from "./pages/AdminProducts";
 import AdminUsers from "./pages/AdminUsers";
 import AdminOrders from "./pages/AdminOrders";
+import UserOrders from "./pages/UserOrders";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/mes-commandes" element={<UserOrders />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
