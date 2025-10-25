@@ -32,61 +32,73 @@ export default function Chaussures() {
               img="Chaussure/Chaussure 1.jpg"
               titre="Talons Argentin"
               prix="25 000 FCFA"
+              description="Talons hauts argentins élégants avec plateforme confortable. Design sophistiqué parfait pour les occasions spéciales et les sorties nocturnes."
             />
             <Produit
               img="Chaussure/Chaussure 2.jpg"
               titre="Talons Orange"
               prix="20 000 FCFA"
+              description="Talons orange vibrants avec talon fin et plateforme. Style audacieux et moderne pour apporter une touche de couleur à vos tenues."
             />
             <Produit
               img="Chaussure/Chaussure 3.jpg"
               titre="Sac et Talons Assortis"
               prix="35 000 FCFA"
+              description="Ensemble coordonné composé de talons élégants et d'un sac assorti. Look complet et harmonieux pour un style raffiné."
             />
             <Produit
               img="Chaussure/Chaussure 4.jpg"
               titre="Talons Perles + Sacoche"
               prix="20 000 FCFA"
+              description="Talons décorés de perles délicates accompagnés d'une petite sacoche. Ensemble féminin et élégant pour les occasions spéciales."
             />
             <Produit
               img="Chaussure/Chaussure 5.jpg"
               titre="Bleu Perlé Assorti"
               prix="35 000 FCFA"
+              description="Ensemble bleu perlé coordonné avec talons et accessoires. Style romantique et sophistiqué pour un look complet."
             />
             <Produit
               img="Chaussure/Chaussure 6.jpg"
               titre="Ensemble Élégant"
               prix="35 000 FCFA"
+              description="Ensemble élégant composé de talons classiques et d'accessoires assortis. Parfait pour un style professionnel ou des sorties."
             />
             <Produit
               img="Chaussure/Chaussure 7.jpg"
               titre="Ensemble Sarah"
               prix="35 000 FCFA"
+              description="Ensemble Sarah complet avec talons et sac coordonné. Design moderne et polyvalent pour toutes les occasions."
             />
             <Produit
               img="Chaussure/Chaussure 8.jpg"
               titre="Nu-pieds Marron"
               prix="12 000 FCFA"
+              description="Nu-pieds marron confortables en cuir véritable. Style classique et intemporel, parfait pour un usage quotidien élégant."
             />
             <Produit
               img="Chaussure/Chaussure 9.jpg"
               titre="Sandales d'Été"
               prix="12 000 FCFA"
+              description="Sandales d'été légères et confortables. Design estival parfait pour les journées chaudes avec un style décontracté chic."
             />
             <Produit
               img="Chaussure/Chaussure 10.jpg"
               titre="Sandales Zara"
               prix="10 000 FCFA"
+              description="Sandales inspirées de Zara avec design moderne. Confortables et tendance pour un look urbain et contemporain."
             />
             <Produit
               img="Chaussure/Chaussure 11.jpg"
               titre="Baskets Blanches"
               prix="15 000 FCFA"
+              description="Baskets blanches classiques en cuir. Style intemporel et polyvalent, parfait pour un look casual chic au quotidien."
             />
             <Produit
               img="Chaussure/Chaussure 12.jpg"
               titre="Jordan"
               prix="10 000 FCFA"
+              description="Baskets Jordan inspirées avec design sportif. Confort et style pour les amateurs de sneakers tendance."
             />
           </div>
         </div>

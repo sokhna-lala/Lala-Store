@@ -34,16 +34,19 @@ export default function Promotions() {
               img="Promo/Promo1.jpg"
               titre="Talon compensé"
               prix="25 000 FCFA"
+              description="Talons compensés élégants avec plateforme confortable. Style moderne et tendance, parfait pour sublimer vos tenues au quotidien."
             />
             <Produit
               img="Promo/Promo 2.jpg"
               titre="Mocassin rouge"
               prix="25 000 FCFA"
+              description="Mocassins rouges classiques en cuir véritable. Design intemporel avec une touche de couleur vibrante pour un style audacieux."
             />
             <Produit
               img="Promo/Promo 3.jpg"
               titre="Mocassin noir"
               prix="25 000 FCFA"
+              description="Mocassins noirs élégants en cuir premium. Pièce polyvalente parfaite pour un look professionnel ou casual chic."
             />
           </div>
         </div>

@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import { useAuth } from "../context/AuthContext";
+import Swal from "sweetalert2";
 import { type Product, products, saveProducts } from "../data/products";
+
+const ITEMS_PER_PAGE = 10;
 
 export default function AdminProducts() {
   const { user } = useAuth();
@@ -10,6 +13,9 @@ export default function AdminProducts() {
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState<Partial<Product>>({});
   const [showForm, setShowForm] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -55,7 +61,18 @@ export default function AdminProducts() {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("Êtes-vous sûr de vouloir supprimer ce produit ?")) {
+    const result = await Swal.fire({
+      title: "Êtes-vous sûr ?",
+      text: "Vous ne pourrez pas revenir en arrière !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Oui, supprimer !",
+      cancelButtonText: "Annuler",
+    });
+
+    if (result.isConfirmed) {
       try {
         const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
         await fetch(`${apiUrl}/products/${id}`, {
@@ -65,16 +82,25 @@ export default function AdminProducts() {
         // Also update local storage
         const updatedProducts = products.filter((p) => p.id !== id);
         saveProducts(updatedProducts);
+        Swal.fire("Supprimé !", "Le produit a été supprimé.", "success");
       } catch (error) {
         console.error("Error deleting product:", error);
-        alert("Erreur lors de la suppression du produit");
+        Swal.fire({
+          icon: "error",
+          title: "Erreur",
+          text: "Erreur lors de la suppression du produit",
+        });
       }
     }
   };
 
   const handleSave = async () => {
     if (!form.titre || !form.prix || !form.category) {
-      alert("Veuillez remplir tous les champs obligatoires.");
+      Swal.fire({
+        icon: "warning",
+        title: "Champs obligatoires",
+        text: "Veuillez remplir tous les champs obligatoires.",
+      });
       return;
     }
 
@@ -119,7 +145,11 @@ export default function AdminProducts() {
       setShowForm(false);
     } catch (error) {
       console.error("Error saving product:", error);
-      alert("Erreur lors de la sauvegarde du produit");
+      Swal.fire({
+        icon: "error",
+        title: "Erreur",
+        text: "Erreur lors de la sauvegarde du produit",
+      });
     }
   };
 
@@ -128,6 +158,27 @@ export default function AdminProducts() {
     setForm({});
     setShowForm(false);
   };
+
+  // Filtrage et recherche
+  const filteredProducts = productList.filter((product) => {
+    const matchesSearch = product.titre
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "" || product.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  // Pagination
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
+
+  // Obtenir les catégories uniques
+  const categories = Array.from(new Set(productList.map((p) => p.category)));
 
   return (
     <Layout header={true} navbar={false}>
@@ -148,6 +199,30 @@ export default function AdminProducts() {
         >
           Ajouter un Produit
         </button>
+
+        {/* Filtres et recherche */}
+        <div className="mb-6 flex flex-col md:flex-row gap-4">
+          <input
+            type="text"
+            placeholder="Rechercher par titre..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border p-2 rounded flex-1"
+          />
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="border p-2 rounded"
+            aria-label="Filtrer par catégorie"
+          >
+            <option value="">Toutes les catégories</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
 
         {(editing || showForm) && (
           <div className="bg-gray-100 p-4 rounded mb-4">
@@ -209,34 +284,105 @@ export default function AdminProducts() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {productList.map((product) => (
-            <div key={product.id} className="bg-white p-4 rounded shadow">
-              <img
-                src={`/${product.img}`}
-                alt={product.titre}
-                className="w-full h-32 object-cover rounded mb-2"
-              />
-              <h3 className="font-semibold">{product.titre}</h3>
-              <p className="text-gray-600">{product.prix}</p>
-              <p className="text-sm text-gray-500">{product.category}</p>
-              <div className="mt-2">
-                <button
-                  onClick={() => handleEdit(product)}
-                  className="bg-yellow-600 text-white px-2 py-1 rounded mr-2"
-                >
-                  Modifier
-                </button>
-                <button
-                  onClick={() => handleDelete(product.id)}
-                  className="bg-red-600 text-white px-2 py-1 rounded"
-                >
-                  Supprimer
-                </button>
-              </div>
-            </div>
-          ))}
+        {/* Tableau des produits */}
+        <div className="bg-white shadow rounded-lg overflow-hidden">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Image
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Titre
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Prix
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Catégorie
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {paginatedProducts.map((product) => (
+                <tr key={product.id}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <img
+                      src={`/${product.img}`}
+                      alt={product.titre}
+                      className="w-16 h-16 object-cover rounded"
+                    />
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {product.titre}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {product.prix}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {product.category}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex space-x-2">
+                    <button
+                      onClick={() => handleEdit(product)}
+                      className="bg-yellow-600 text-white px-2 py-1 rounded text-xs"
+                    >
+                      Modifier
+                    </button>
+                    <button
+                      onClick={() => handleDelete(product.id)}
+                      className="bg-red-600 text-white px-2 py-1 rounded text-xs"
+                    >
+                      Supprimer
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-6 flex justify-center">
+            <nav className="flex items-center space-x-1">
+              <button
+                onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                disabled={currentPage === 1}
+                className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 disabled:opacity-50"
+              >
+                Précédent
+              </button>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`px-3 py-2 text-sm font-medium border ${
+                      page === currentPage
+                        ? "text-blue-600 bg-blue-50 border-blue-500"
+                        : "text-gray-500 bg-white border-gray-300 hover:bg-gray-50"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                )
+              )}
+              <button
+                onClick={() =>
+                  setCurrentPage(Math.min(totalPages, currentPage + 1))
+                }
+                disabled={currentPage === totalPages}
+                className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 disabled:opacity-50"
+              >
+                Suivant
+              </button>
+            </nav>
+          </div>
+        )}
       </div>
     </Layout>
   );

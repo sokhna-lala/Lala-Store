@@ -28,7 +28,7 @@ const defaultProducts: Product[] = [
   // Vêtements
   {
     id: "robe-elegante",
-    img: "Robe/5.jpeg",
+    img: "/Robe/5.jpeg",
     titre: "Robe élégante",
     prix: "25 000 FCFA",
     category: "vetements",

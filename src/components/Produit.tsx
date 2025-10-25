@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 type ProduitProps = {
   id?: string | number;
@@ -68,7 +69,14 @@ export default function Produit({
       localStorage.setItem("cart", JSON.stringify(cart));
       // dispatch without try/catch; browsers support CustomEvent in modern apps
       window.dispatchEvent(new CustomEvent("cartUpdated"));
-      // small visual feedback could be added later
+      // Feedback utilisateur
+      Swal.fire({
+        icon: "success",
+        title: "Ajouté au panier !",
+        text: `${titre} a été ajouté à votre panier.`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
     } catch {
       // ignore localStorage errors
     }
