@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { products } from "../data/products";
+import Swal from "sweetalert2";
 
 type LayoutProps = {
   children?: ReactNode;
@@ -145,13 +146,25 @@ export default function Layout({
 
 function AuthButtons({ count }: { count: number }) {
   const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    Swal.fire({
+      icon: "success",
+      title: "Déconnexion réussie",
+      text: "Vous vous êtes déconnecté avec succès.",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  };
+
   return (
     <div className="flex items-center gap-3">
       {user ? (
         <>
           <span className="text-sm text-gray-700">Bonjour, {user.name}</span>
           <button
-            onClick={logout}
+            onClick={handleLogout}
             className="text-gray-600 hover:text-gray-800"
           >
             Déconnexion

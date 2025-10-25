@@ -1,16 +1,97 @@
 import { Link, Navigate } from "react-router-dom";
+import { useState } from "react";
 import Layout from "../components/Layout";
 import Produit from "../components/Produit";
 import Carousel from "../components/Carousel";
 import { useAuth } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 export default function Accueil() {
   const { user } = useAuth();
+  const [newsletterEmail, setNewsletterEmail] = useState("");
 
   // Redirect admin users to admin dashboard
   if (user?.role === "admin") {
     return <Navigate to="/admin" replace />;
   }
+
+  const handleEnSavoirPlus = () => {
+    Swal.fire({
+      title: "À propos de Lala Store",
+      html: `
+        <div style="text-align: left; line-height: 1.6;">
+          <h3 style="color: #8B5E3C; margin-bottom: 15px;">Notre Histoire</h3>
+          <p style="margin-bottom: 15px;">
+            Fondée en 2020, Lala Store est née d'une passion pour l'élégance et l'authenticité.
+            Notre boutique en ligne propose une collection exclusive de tissus traditionnels,
+            de voiles raffinés, de sacs à main élégants et de bijoux précieux.
+          </p>
+
+          <h3 style="color: #8B5E3C; margin-bottom: 15px;">Notre Mission</h3>
+          <p style="margin-bottom: 15px;">
+            Nous nous engageons à offrir à nos clientes des produits de qualité exceptionnelle
+            qui allient tradition et modernité. Chaque pièce est soigneusement sélectionnée
+            pour garantir authenticité et raffinement.
+          </p>
+
+          <h3 style="color: #8B5E3C; margin-bottom: 15px;">Nos Valeurs</h3>
+          <ul style="margin-bottom: 15px;">
+            <li>• <strong>Qualité</strong> : Sélection rigoureuse de nos fournisseurs</li>
+            <li>• <strong>Authenticité</strong> : Produits traditionnels et originaux</li>
+            <li>• <strong>Service</strong> : Accompagnement personnalisé</li>
+            <li>• <strong>Innovation</strong> : Tendances modernes et classiques</li>
+          </ul>
+
+          <h3 style="color: #8B5E3C; margin-bottom: 15px;">Notre Engagement</h3>
+          <p>
+            Chez Lala Store, nous croyons que la mode doit être accessible à toutes.
+            C'est pourquoi nous proposons des prix compétitifs sans compromettre la qualité,
+            et nous nous efforçons de créer une expérience d'achat exceptionnelle pour chacune de nos clientes.
+          </p>
+        </div>
+      `,
+      confirmButtonText: "Fermer",
+      confirmButtonColor: "#8B5E3C",
+      width: "600px",
+      customClass: {
+        popup: "swal-wide",
+      },
+    });
+  };
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) {
+      Swal.fire({
+        icon: "warning",
+        title: "Email requis",
+        text: "Veuillez saisir votre adresse email.",
+        confirmButtonColor: "#8B5E3C",
+      });
+      return;
+    }
+
+    try {
+      // Simuler l'envoi à une API
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulation
+
+      Swal.fire({
+        icon: "success",
+        title: "Inscription réussie !",
+        text: "Merci de vous être inscrit à notre newsletter. Vous recevrez bientôt nos dernières nouvelles.",
+        confirmButtonColor: "#8B5E3C",
+      });
+
+      setNewsletterEmail("");
+    } catch {
+      Swal.fire({
+        icon: "error",
+        title: "Erreur",
+        text: "Une erreur s'est produite. Veuillez réessayer.",
+        confirmButtonColor: "#8B5E3C",
+      });
+    }
+  };
   return (
     <Layout>
       <div className="bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 min-h-screen">
@@ -49,7 +130,10 @@ export default function Accueil() {
                     Voir plus
                   </Link>
 
-                  <button className="bg-white/80 backdrop-blur-sm text-amber-900 font-semibold px-8 py-4 rounded-full shadow hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                  <button
+                    onClick={handleEnSavoirPlus}
+                    className="bg-white/80 backdrop-blur-sm text-amber-900 font-semibold px-8 py-4 rounded-full shadow hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+                  >
                     En savoir plus
                   </button>
                 </div>
@@ -81,7 +165,7 @@ export default function Accueil() {
 
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl max-w-sm w-full aspect-[4/5]">
                   <img
-                    src="Models/la fille voilée.png"
+                    src="/Models/la fille voilée.png"
                     alt="Collection"
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                   />
@@ -130,9 +214,9 @@ export default function Accueil() {
           <div className="bg-white/60 backdrop-blur-sm rounded-3xl shadow-xl p-6">
             <Carousel
               images={[
-                "Models/model1.jpg",
-                "Models/model2.jpg",
-                "Models/model3.jpg",
+                "/Models/model1.jpg",
+                "/Models/model2.jpg",
+                "/Models/model3.jpg",
               ]}
               alt="modèle"
             />
@@ -158,44 +242,52 @@ export default function Accueil() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <Produit
-              img="Tissus/Brodé autriche.jpeg"
+              img="/Tissus/Brodé autriche.jpeg"
               titre="Brodé autriche"
               prix="30 000 FCFA"
+              description="Tissu traditionnel brodé autrichien de haute qualité, parfait pour créer des pièces élégantes et raffinées. Idéal pour les tenues de cérémonie et les créations sur mesure."
             />
             <Produit
-              img="Bijoux/colier2.jpeg"
+              img="/Bijoux/colier2.jpeg"
               titre="Parure en or"
               prix="300 000 FCFA"
+              description="Magnifique parure en or 18 carats composée d'un collier, de boucles d'oreilles et d'un bracelet. Pièce maîtresse pour sublimer votre style avec élégance et sophistication."
             />
             <Produit
-              img="Sac/sac a main Pedra.jpeg"
+              img="/Sac/sac a main Pedra.jpeg"
               titre="Sac en cuir"
               prix="15 000 FCFA"
+              description="Sac à main en cuir véritable de couleur marron, avec fermeture éclair et compartiments intérieurs. Design moderne et fonctionnel pour un usage quotidien."
             />
             <Produit
-              img="Voile/voiles.jpg"
+              img="/Voile/voiles.jpg"
               titre="Voile Mouslin simple"
               prix="1 000 FCFA"
+              description="Voile en mousseline légère et aérienne, parfaite pour les tenues traditionnelles. Tissu fluide et confortable, disponible en plusieurs coloris."
             />
             <Produit
-              img="Voile/Cachemir imprimé.jpeg"
+              img="/Voile/Cachemir imprimé.jpeg"
               titre="Voile Cachemir imprimé"
               prix="1 000 FCFA"
+              description="Voile en cachemire avec motifs imprimés délicats. Combinaison parfaite de douceur et d'élégance pour vos tenues traditionnelles."
             />
             <Produit
-              img="Tissus/cotonade.jpeg"
+              img="/Tissus/cotonade.jpeg"
               titre="Cotonade"
               prix="1 000 FCFA"
+              description="Tissu en cotonade de qualité supérieure, résistant et confortable. Idéal pour la confection de vêtements traditionnels et modernes."
             />
             <Produit
-              img="Sac/sac dior.jpeg"
+              img="/Sac/sac dior.jpeg"
               titre="Sac Dior"
               prix="100 000 FCFA"
+              description="Sac à main de luxe inspiré de Dior, en cuir synthétique haut de gamme. Design élégant avec chaîne dorée et compartiments multiples."
             />
             <Produit
-              img="Bijoux/BOUCLE 14.jpeg"
+              img="/Bijoux/BOUCLE 14.jpeg"
               titre="Boucles d'oreilles"
               prix="10 000 FCFA"
+              description="Boucles d'oreilles en argent plaqué or avec motifs traditionnels. Pièces délicates et raffinées pour compléter votre look avec style."
             />
           </div>
         </section>
@@ -211,16 +303,25 @@ export default function Accueil() {
                 Inscrivez-vous à notre newsletter et recevez en exclusivité nos
                 nouvelles collections et offres spéciales
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <form
+                onSubmit={handleNewsletterSubmit}
+                className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+              >
                 <input
                   type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Votre adresse email"
                   className="flex-1 px-6 py-4 rounded-full text-amber-900 placeholder-amber-400 focus:outline-none focus:ring-4 focus:ring-amber-300"
+                  required
                 />
-                <button className="bg-white text-amber-900 font-semibold px-8 py-4 rounded-full hover:bg-amber-50 transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
+                <button
+                  type="submit"
+                  className="bg-white text-amber-900 font-semibold px-8 py-4 rounded-full hover:bg-amber-50 transform hover:-translate-y-1 transition-all duration-300 shadow-lg"
+                >
                   S'inscrire
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </section>

@@ -1,3 +1,10 @@
+- [x] Refactoriser AdminProducts.tsx pour utiliser un tableau au lieu d'une grille
+- [x] Ajouter un champ de recherche pour filtrer par titre
+- [x] Ajouter un filtre par catégorie
+- [x] Implémenter la pagination (10 produits par page)
+- [x] Tester les nouvelles fonctionnalités
+- [x] Refactoriser AdminUsers.tsx : ajouter recherche par nom/email, filtre par rôle, pagination
 - [x] Ajouter la fonctionnalité d'édition des utilisateurs dans AdminUsers.tsx
 - [x] Ajouter la fonctionnalité de suppression des utilisateurs dans AdminUsers.tsx
-- [x] Tester les modifications pour s'assurer que les changements sont sauvegardés dans localStorage
+- [ ] Refactoriser AdminOrders.tsx : passer à un tableau, ajouter recherche par utilisateur/ID, filtre par statut, pagination
+- [ ] Tester les nouvelles fonctionnalités pour AdminUsers et AdminOrders

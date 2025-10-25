@@ -31,61 +31,73 @@ export default function Voiles() {
               img="Voiles/Voile 1.jpg"
               titre="Voile perlé"
               prix="2 000 FCFA"
+              description="Voile élégant décoré de perles délicates. Tissu léger et fluide, parfait pour un look traditionnel raffiné avec une touche d'élégance."
             />
             <Produit
               img="Voiles/Voile 2.jpg"
               titre="Mousseline perlée"
               prix="1 000 FCFA"
+              description="Mousseline fine avec motifs perlés. Tissu aérien et confortable, idéal pour les tenues traditionnelles légères et élégantes."
             />
             <Produit
               img="Voiles/Voile 3.jpg"
               titre="Mousseline simple"
               prix="2 500 FCFA"
+              description="Mousseline simple et pure en tissu de qualité. Coupe classique et intemporelle, parfaite pour un style traditionnel sobre."
             />
             <Produit
               img="Voiles/Voile 4.jpg"
               titre="Mousseline avec finition"
               prix="3 500 FCFA"
+              description="Mousseline avec finitions raffinées et détails délicats. Tissu premium offrant confort et élégance pour toutes occasions."
             />
             <Produit
               img="Voiles/Voile 5.jpg"
               titre="Voile Assya"
               prix="10 000 FCFA"
+              description="Voile Assya en tissu luxueux avec broderies sophistiquées. Pièce maîtresse pour un look traditionnel complet et élégant."
             />
             <Produit
               img="Voiles/Voile 6.jpg"
               titre="Voile coton"
               prix="2 000 FCFA"
+              description="Voile en coton naturel et respirant. Confortable pour un usage quotidien, avec une coupe simple et pratique."
             />
             <Produit
               img="Voiles/voile 7.jpg"
               titre="Voile à paillettes"
               prix="2 000 FCFA"
+              description="Voile orné de paillettes scintillantes. Design festif et élégant, parfait pour les occasions spéciales et cérémonies."
             />
             <Produit
               img="Voiles/Voile 8.jpg"
               titre="Voile Habiba"
               prix="1 500 FCFA"
+              description="Voile Habiba en tissu léger et fluide. Style traditionnel authentique avec une touche de modernité dans les finitions."
             />
             <Produit
               img="Voiles/Voile 9.jpg"
               titre="Voile plissé"
               prix="2 000 FCFA"
+              description="Voile avec plis élégants et texture raffinée. Design moderne apportant volume et mouvement à votre tenue traditionnelle."
             />
             <Produit
               img="Voiles/Voile 10.jpg"
               titre="Mousseline perlée simple"
               prix="2 000 FCFA"
+              description="Mousseline perlée dans un style épuré. Combinaison parfaite de simplicité et d'élégance pour un look traditionnel discret."
             />
             <Produit
               img="Voiles/Voile 11.jpg"
               titre="La grande dame"
               prix="5 000 FCFA"
+              description="Voile prestigieux 'La grande dame' avec finitions luxueuses. Pièce d'exception pour les occasions importantes et cérémonies."
             />
             <Produit
               img="Voiles/Voile 13.jpg"
               titre="Voile en soie"
               prix="5 000 FCFA"
+              description="Voile en soie naturelle de qualité supérieure. Tissu noble et précieux offrant une douceur incomparable et un tombé parfait."
             />
           </div>
         </div>

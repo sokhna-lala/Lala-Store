@@ -33,57 +33,73 @@ export default function Vetements() {
               img="Robe/5.jpeg"
               titre="Robe élégante"
               prix="25 000 FCFA"
+              description="Robe élégante en tissu fluide, parfaite pour les occasions spéciales. Coupe ajustée avec finitions raffinées et motifs délicats."
             />
-            <Produit img="Robe/bourka.jpeg" titre="Bourka" prix="15 000 FCFA" />
+            <Produit
+              img="Robe/bourka.jpeg"
+              titre="Bourka"
+              prix="15 000 FCFA"
+              description="Bourka traditionnelle en tissu léger et respirant. Design authentique avec broderies traditionnelles, idéale pour un look traditionnel complet."
+            />
             <Produit
               img="Robe/robe 6.jpeg"
               titre="Robe Laila"
               prix="18 000 FCFA"
+              description="Robe Laila en mousseline légère, parfaite pour les tenues de tous les jours. Coupe ample et confortable avec motifs floraux."
             />
             <Produit
               img="Robe/robe2.jpeg"
               titre="Abaya Nour"
               prix="35 000 FCFA"
+              description="Abaya Nour élégante en tissu premium. Design moderne avec touches traditionnelles, parfaite pour un style raffiné au quotidien."
             />
             <Produit
               img="Robe/robe 8.jpg"
               titre="Jupe d'été"
               prix="35 000 FCFA"
+              description="Jupe d'été légère et fluide en tissu aérien. Coupe évasée parfaite pour les journées chaudes, avec motifs estivaux colorés."
             />
             <Produit
               img="Robe/robe 9.jpg"
               titre="Ensemble Salope"
               prix="35 000 FCFA"
+              description="Ensemble coordonné composé d'une jupe et d'un haut assorti. Tissu de qualité avec finitions impeccables pour un look moderne."
             />
             <Produit
               img="Robe/robe2.jpeg"
               titre="Ensemble Sarah"
               prix="35 000 FCFA"
+              description="Ensemble Sarah complet avec jupe et chemisier. Design élégant et polyvalent, parfait pour le bureau ou les sorties."
             />
             <Produit
               img="Robe/robe 10.jpg"
               titre="Ensemble Jupe plissée + Chemise"
               prix="35 000 FCFA"
+              description="Ensemble composé d'une jupe plissée et d'une chemise classique. Style professionnel avec une touche de féminité."
             />
             <Produit
               img="Robe/robe 15.jpg"
               titre="Ensemble Pantalon Cumeno"
               prix="35 000 FCFA"
+              description="Ensemble pantalon en tissu Cumeno de qualité. Coupe moderne et confortable, idéale pour un style décontracté chic."
             />
             <Produit
               img="Robe/robe 16.jpg"
               titre="Ensemble Jupe Cumeno Marron"
               prix="15 000 FCFA"
+              description="Ensemble jupe en Cumeno marron. Tissu résistant et élégant, parfait pour créer des tenues polyvalentes et durables."
             />
             <Produit
               img="Robe/robe 17.jpg"
               titre="Robe Large Jaune Moutarde"
               prix="15 000 FCFA"
+              description="Robe ample jaune moutarde en tissu léger. Coupe confortable et colorée, parfaite pour apporter une touche de soleil à votre garde-robe."
             />
             <Produit
               img="Robe/robe 18.jpg"
               titre="Charry Vert"
               prix="15 000 FCFA"
+              description="Ensemble Charry vert en tissu traditionnel. Design authentique avec couleurs vives, idéal pour les tenues traditionnelles festives."
             />
           </div>
         </div>

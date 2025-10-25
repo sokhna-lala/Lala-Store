@@ -47,7 +47,7 @@ export default function AllProducts() {
                   className="border rounded-2xl p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1"
                 >
                   <img
-                    src={product.img}
+                    src={`/${product.img}`}
                     alt={product.titre}
                     className="w-full h-56 object-cover rounded-xl mb-4"
                   />
